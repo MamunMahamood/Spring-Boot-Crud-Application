@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <style>
+       .disbutton{
+       display: flex;
+       justify-content: center;}
+
+
+
+    </style>
+
+</head>
+<body>
+
+<div class="bg-dark text-light mb-5">
+    <h2 style="text-align:center; padding:20px" >Student Management System</h2>
+</div>
+
+<div class="container mt-5">
+  <div class="disbutton">
+      <a class=" col-3 btn btn-success" style="margin:20px" th:href="@{/}">Home</a>
+      <a class=" col-3 btn btn-secondary"style="margin:20px" th:href="@{/form}">Add Student</a>
+  </div>
+
+    <table class="table table-success table-striped mt-5">
+        <thead>
+        <tr class="table-dark">
+
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Department</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        <tr th:each="stud: ${stu}">
+
+            <td th:text="${stud.fname}"></td>
+            <td th:text="${stud.lname}"></td>
+            <td th:text="${stud.dept}"></td>
+            <td th:text="${stud.email}"></td>
+            <td>
+                <a class="btn btn-primary" th:href="@{/edit/{id}(id=${stud.id})}">Update</a>
+                <a class="btn btn-danger"style="margin-left:20px" th:href="@{/delete/{id}(id=${stud.id})}">Delete</a>
+            </td>
+
+        </tr>
+
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
